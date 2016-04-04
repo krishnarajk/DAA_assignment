@@ -9,9 +9,10 @@
 using namespace std;
 
 int main(){
-	for(int i=1000;i<6000;i+=1000){
+	cout<<" result='[[\"Batch Length\",\"bubble_sort\",\"selection_sort\",\"quick sort\"] "	;
+	for(int i=1000;i<10000;i+=500){
 		int array[i];
-		long int stime,etime;
+		long int stime,etime,time_sel,time_bub,time_quk;
 		struct timeval tp;
 
 		for(int j=0; j<i; j++){ 
@@ -19,25 +20,25 @@ int main(){
 	         
 	    //    cout << array[i] << endl;
 	 	} 
-	 	cout<<endl<<"Number of elements is "<<i<<endl;
-	 	cout<<"------------------------"<<endl;
 	 	gettimeofday(&tp, NULL);
 	 	stime=tp.tv_sec * 1000 + tp.tv_usec / 1000;
 	 	bubble_sort(array,i);
 	 	gettimeofday(&tp, NULL);
 	 	etime=tp.tv_sec * 1000 + tp.tv_usec / 1000;
-	 	cout<<"Time for bubble sort :"<<etime-stime<<"ms"<<endl;
+	 	time_bub=etime-stime;
 	 	gettimeofday(&tp, NULL);
 	 	stime=tp.tv_sec * 1000 + tp.tv_usec / 1000;
 	 	selection_sort(array,i);
 	 	gettimeofday(&tp, NULL);
 	 	etime=tp.tv_sec * 1000 + tp.tv_usec / 1000;
-	 	cout<<"Time for selection sort :"<<etime-stime<<"ms"<<endl;
+	 	time_sel=etime-stime;
 	 	gettimeofday(&tp, NULL);
 	 	stime=tp.tv_sec * 1000 + tp.tv_usec / 1000;
 	 	quick(array,0,i-1);
 	 	gettimeofday(&tp, NULL);
 	 	etime=tp.tv_sec * 1000 + tp.tv_usec / 1000;
-	 	cout<<"Time for quick sort :"<<etime-stime<<"ms"<<endl;
- 	}
+	 	time_quk=etime-stime;
+	 	cout<<",["<<i<<","<<time_bub<<","<<time_sel<<","<<time_quk<<"]";
+	}
+	cout<<"]';";
 }
